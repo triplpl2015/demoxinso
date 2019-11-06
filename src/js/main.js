@@ -67,6 +67,19 @@ const activeHeader = () => {
 	}
 }
 
+// ACTIVE ITEM MENU BY URL
+function activeMenuByUrl() {
+	var url = window.location.href.split('/').pop();
+
+	let listNavItem = $('.nav-item a');
+	listNavItem.each(function() {
+		let currenUrl = $(this).attr('href');
+		if (url.includes(currenUrl)) {
+			$(this).parents('.nav-item').addClass('active');
+		}
+	})
+}
+
 // CONTROL SVG
 const SVG = () => {
 	jQuery('img.svg').each(function() {
@@ -139,7 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	map();
 	// SVG CONTROL
 	SVG();
-	// BACK TO TOP
+	// HEADER
+	activeMenuByUrl()
 });
 
 // CHẠY KHI WINDOWN SCROLL
